@@ -15,16 +15,21 @@
 
   <body>
     <div data-tauri-drag-region id="titlebar">
-      <div id="titlebox">
-        <div id="title" data-tauri-drag-region></div>
+      <div id="titlebox" data-tauri-drag-region>
+        <div id="title"></div>
         <div class="titlebtn" id="savebtn"><i class="fa-solid fa-floppy-disk"></i></div>
         <div class="titlebtn" id="openbtn"><i class="fa-regular fa-folder-open"></i></div>
       </div>
       <div id="btnbox">
-        <div id="winbuttons">
-          <div id="titlebar-minimize"><svg aria-hidden="true" role="img" width="12" height="12" viewBox="0 0 12 12"><rect fill="currentColor" width="10" height="1" x="1" y="6"></rect></svg></div>
-          <div id="titlebar-maximize"><svg aria-hidden="true" role="img" width="12" height="12" viewBox="0 0 12 12"><rect width="9" height="9" x="1.5" y="1.5" fill="none" stroke="currentColor"></rect></svg></div>
-          <div id="titlebar-close"><svg aria-hidden="true" role="img" width="12" height="12" viewBox="0 0 12 12"><polygon fill="currentColor" fill-rule="evenodd" points="11 1.576 6.583 6 11 10.424 10.424 11 6 6.583 1.576 11 1 10.424 5.417 6 1 1.576 1.576 1 6 5.417 10.424 1"></polygon></svg></div>
+        <div id="win-buttons">
+          <div id="win-minimize"><svg aria-hidden="true" role="img" width="12" height="12" viewBox="0 0 12 12"><rect fill="currentColor" width="10" height="1" x="1" y="6"></rect></svg></div>
+          <div id="win-maximize"><svg aria-hidden="true" role="img" width="12" height="12" viewBox="0 0 12 12"><rect width="9" height="9" x="1.5" y="1.5" fill="none" stroke="currentColor"></rect></svg></div>
+          <div id="win-close"><svg aria-hidden="true" role="img" width="12" height="12" viewBox="0 0 12 12"><polygon fill="currentColor" fill-rule="evenodd" points="11 1.576 6.583 6 11 10.424 10.424 11 6 6.583 1.576 11 1 10.424 5.417 6 1 1.576 1.576 1 6 5.417 10.424 1"></polygon></svg></div>
+        </div>
+        <div id="mac-buttons" data-tauri-drag-region>
+          <div id="mac-close"><i class="fa-solid fa-xmark"></i></div>
+          <div id="mac-minimize"><i class="fa-solid fa-minus"></i></div>
+          <div id="mac-maximize"><i class="fa-solid fa-plus"></i></div>
         </div>
       </div>
     </div>

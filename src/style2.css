@@ -12,6 +12,7 @@
   bottom: 0;
   background-color: var(--editor-bg);
   animation: moveright 200ms;
+  border-radius: 0 0 10px 0;
 }
 #editor { 
   position: absolute;
@@ -74,11 +75,13 @@
   bottom: 0;
   width: 16rem;
   background: var(--bg-other);
+  border-radius: 0 0 0 10px;
 }
 /* Responsiveness */
 @media only screen and (max-width: 700px) {
   #editorbox {
     animation: moveleft 200ms;
+    border-radius: 0 0 10px 10px;
     left: 0;
   }
   #tabbar {
@@ -93,7 +96,7 @@
   to {left: 0;}
 }
 @keyframes moveright {
-  from {left: 0} 
+  from {left: 0;} 
   to {left: 16rem;}
 }
 @keyframes tableft {

@@ -8,11 +8,11 @@ editor.session.setMode("ace/mode/javascript")
 editor.setOptions({
     cursorStyle: "smooth",
     showPrintMargin: false,
-    theme: "ace/theme/nord_dark"
+    theme: "ace/theme/dracula"
 })
 
 var resizeTimer = null
-var opacity = 0.8
+var opacity = 0.7
 
 window.onload = () => {
     editorbg = getComputedStyle(editordiv).getPropertyValue('background-color')
