@@ -8,7 +8,7 @@ const path = window.__TAURI__.path;
 document.getElementById('openbtn').addEventListener('click', () => openfile())
 document.getElementById('savebtn').addEventListener('click', () => savefile())
 
-if (await os.platform() == "win32") {
+if (await os.platform() == "win32" || await os.platform() == "linux") {
   document.getElementById('win-buttons').style.display = "flex"
   document.getElementById('win-minimize').addEventListener('click', () => appWindow.minimize())
   document.getElementById('win-maximize').addEventListener('click', () => appWindow.toggleMaximize())
