@@ -1,0 +1,102 @@
+
+#editorbox {
+  position: absolute;
+  top: 2.5rem;
+  left: 16rem;
+  right: 0;
+  bottom: 0;
+  background-color: #282c34;
+  animation: moveright 200ms;
+}
+#editor { 
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 1em;
+  font-size: 16px;
+  font-family: 'JetBrains Mono';
+}
+#tabbar {
+  position: absolute;
+  top: 0rem;
+  left: 16rem;
+  right: 0;
+  height: 2.5rem;
+  line-height: 2rem;
+  color: white;
+  pointer-events: none;
+  display: flex;
+  animation: tabright 200ms;
+}
+#tabbar > * {
+  pointer-events: all;
+}
+#tabbar > .tab {
+  border-radius: 0.5rem 0.5rem 0 0;
+  width: 8rem;
+  box-sizing: border-box;
+  padding-inline: 0.5rem;
+  margin-top: 0.5rem;
+  user-select: none;
+  transition: all 200ms;
+}
+#tabbar > .tab.active {
+  background-color: rgba(40, 44, 52, 1);
+}
+#tabbar > .tab.inactive {
+  background-color: rgba(40, 44, 52, 0.5);
+}
+#newtab {
+  margin-top: 0.5rem;
+  width: 2rem;
+  padding: 0.25rem;
+  cursor: pointer;
+  order: 1;
+}
+#newtab > svg {
+  stroke: #eeeeeeaa;
+  transition: stroke 100ms;
+}
+#newtab:hover > svg {
+  stroke: #fff;
+}
+#sidebar {
+  position: absolute;
+  top: 2.5rem;
+  left: 0;
+  bottom: 0;
+  width: 16rem;
+  background: rgba(40, 44, 52, 0.5);
+}
+/* Responsiveness */
+@media only screen and (max-width: 700px) {
+  #editorbox {
+    animation: moveleft 200ms;
+    left: 0;
+  }
+  #tabbar {
+    animation: tableft 200ms;
+    left: 10rem;
+  }
+}
+/* -------------- */
+/* Animations */
+@keyframes moveleft {
+  from {left: 16rem;} 
+  to {left: 0;}
+}
+@keyframes moveright {
+  from {left: 0} 
+  to {left: 16rem;}
+}
+@keyframes tableft {
+  from {left: 16rem;} 
+  to {left: 10rem;}
+}
+@keyframes tabright {
+  from {left: 10rem;} 
+  to {left: 16rem;}
+}
+/* ---------- */
