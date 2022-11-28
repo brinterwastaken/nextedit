@@ -14,16 +14,16 @@ body {
   width: 100%;
   height: 2.5rem;
   padding-inline-start: 1em;
-  background: rgba(40, 44, 52, 0.5);
+  background: var(--bg-other);
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 14px;
-  color: #dddfe4;
+  color: var(--main-fg);
 }
 #titlebox {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.4rem;
   align-items: center;
 }
 .titlebtn {

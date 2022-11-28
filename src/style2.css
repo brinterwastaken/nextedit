@@ -1,11 +1,16 @@
-
+:root {
+  --editor-bg: #000;
+  --bg-other: #000;
+  --main-fg: #000;
+  --newtab-stroke: #000;
+}
 #editorbox {
   position: absolute;
   top: 2.5rem;
   left: 16rem;
   right: 0;
   bottom: 0;
-  background-color: #282c34;
+  background-color: var(--editor-bg);
   animation: moveright 200ms;
 }
 #editor { 
@@ -25,7 +30,7 @@
   right: 0;
   height: 2.5rem;
   line-height: 2rem;
-  color: white;
+  color: var(--main-fg);
   pointer-events: none;
   display: flex;
   animation: tabright 200ms;
@@ -43,10 +48,10 @@
   transition: all 200ms;
 }
 #tabbar > .tab.active {
-  background-color: rgba(40, 44, 52, 1);
+  background-color: var(--editor-bg)
 }
 #tabbar > .tab.inactive {
-  background-color: rgba(40, 44, 52, 0.5);
+  background-color: var(--bg-other);
 }
 #newtab {
   margin-top: 0.5rem;
@@ -56,11 +61,11 @@
   order: 1;
 }
 #newtab > svg {
-  stroke: #eeeeeeaa;
+  stroke: var(--newtab-stroke);
   transition: stroke 100ms;
 }
 #newtab:hover > svg {
-  stroke: #fff;
+  stroke: var(--main-fg);;
 }
 #sidebar {
   position: absolute;
@@ -68,7 +73,7 @@
   left: 0;
   bottom: 0;
   width: 16rem;
-  background: rgba(40, 44, 52, 0.5);
+  background: var(--bg-other);
 }
 /* Responsiveness */
 @media only screen and (max-width: 700px) {
@@ -78,7 +83,7 @@
   }
   #tabbar {
     animation: tableft 200ms;
-    left: 10rem;
+    left: 9rem;
   }
 }
 /* -------------- */
@@ -93,10 +98,10 @@
 }
 @keyframes tableft {
   from {left: 16rem;} 
-  to {left: 10rem;}
+  to {left: 9rem;}
 }
 @keyframes tabright {
-  from {left: 10rem;} 
+  from {left: 9rem;} 
   to {left: 16rem;}
 }
 /* ---------- */

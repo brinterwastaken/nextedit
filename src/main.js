@@ -17,38 +17,40 @@ document
 document.getElementById('openbtn').addEventListener('click', () => openfile())
 document.getElementById('savebtn').addEventListener('click', () => savefile())
 
+const filetypes = [
+  {
+    name: 'JavaScript',
+    extensions: ['js'],
+  },
+  {
+    name: 'Hyper Text Markup Language',
+    extensions: ['html'],
+  },
+  {
+    name: 'Cascading Style Sheet',
+    extensions: ['css'],
+  },
+  {
+    name: 'C Source File',
+    extensions: ['c'],
+  },
+  {
+    name: 'C++ Source File',
+    extensions: ['cpp'],
+  },
+  {
+    name: 'Java Source File',
+    extensions: ['java'],
+  },
+  {
+    name: 'All Files',
+    extensions: ['*'],
+  }
+]
+
 async function openfile() {
   var selected = await open({
-    filters: [
-      {
-        name: 'JavaScript',
-        extensions: ['js'],
-      },
-      {
-        name: 'Hyper Text Markup Language',
-        extensions: ['html'],
-      },
-      {
-        name: 'Cascading Style Sheet',
-        extensions: ['css'],
-      },
-      {
-        name: 'C Source File',
-        extensions: ['c'],
-      },
-      {
-        name: 'C++ Source File',
-        extensions: ['cpp'],
-      },
-      {
-        name: 'Java Source File',
-        extensions: ['java'],
-      },
-      {
-        name: 'All Files',
-        extensions: ['*'],
-      }
-    ]
+    filters: filetypes
   })
   var contents = await readTextFile(selected)
   var currenttab = document.getElementById('currenttab')
@@ -58,10 +60,7 @@ async function openfile() {
 
 async function savefile() {
   var filepath = await save({
-    filters: [{
-      name: "All Files",
-      extensions: ['*'],
-    }]
+    filters: filetypes
   })
   await writeTextFile(filepath, editor.session.getValue())
 }
