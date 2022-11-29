@@ -17,13 +17,13 @@ fn main() {
     tauri::Builder::default().setup(|app| {
         let window = app.get_window("main").unwrap();
 
-        set_shadow(&window, true).expect("Unsupported platform!");
-
-        #[cfg(target_os = "macos")]
-        apply_vibrancy(&window, NSVisualEffectMaterial::HudWindow, Some(NSVisualEffectState::Active), Some(10.0)).expect("Unsupported platform! 'apply_vibrancy' is only supported on macOS");
-  
-        #[cfg(target_os = "windows")]
-        apply_acrylic(&window, Some((0,0,0,0))).expect("Unsupported platform! 'apply_blur' is only supported on Windows");
+        if cfg!(target_os = "macos") {
+            apply_vibrancy(&window, NSVisualEffectMaterial::HudWindow, Some(NSVisualEffectState::Active), Some(10.0)).expect("Unsupported platform! 'apply_vibrancy' is only supported on macOS");
+            set_shadow(&window, true).expect("Unsupported platform!");
+        } else if cfg!(target_os = "windows") {
+            apply_acrylic(&window, Some((0,0,0,0))).expect("Unsupported platform! 'apply_acrylic' is only supported on Windows");
+            set_shadow(&window, true).expect("Unsupported platform!");
+        } 
 
         Ok(())
     })
