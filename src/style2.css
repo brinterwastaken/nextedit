@@ -41,18 +41,27 @@
 }
 #tabbar > .tab {
   border-radius: 0.5rem 0.5rem 0 0;
-  width: 8rem;
+  width: 7rem;
   box-sizing: border-box;
   padding-inline: 0.5rem;
   margin-top: 0.5rem;
   user-select: none;
   transition: all 200ms;
+  overflow: hidden; 
+  white-space: nowrap; 
+  text-overflow: ellipsis;
 }
 #tabbar > .tab.active {
   background-color: var(--editor-bg)
 }
 #tabbar > .tab.inactive {
   background-color: var(--bg-other);
+}
+#tabbar > .tab::before {
+  font-family: "FontAwesome";
+  content: "\f304";
+  font-size: 12px;
+  padding-right: 0.5rem;
 }
 #newtab {
   margin-top: 0.5rem;

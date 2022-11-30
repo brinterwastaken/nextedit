@@ -7,8 +7,10 @@ const path = window.__TAURI__.path;
 
 document.getElementById('openbtn').addEventListener('click', () => openfile())
 document.getElementById('savebtn').addEventListener('click', () => savefile())
+document.getElementById('savebtn').addEventListener('contextmenu', (ev) => {ev.preventDefault(); saveas()})
 
-if (await os.platform() == "win32" || await os.platform() == "linux") {
+
+if (await os.platform() === "win32" || "linux") {
   document.getElementById('win-buttons').style.display = "flex"
   document.getElementById('win-minimize').addEventListener('click', () => appWindow.minimize())
   document.getElementById('win-maximize').addEventListener('click', () => appWindow.toggleMaximize())
@@ -22,6 +24,10 @@ if (await os.platform() == "win32" || await os.platform() == "linux") {
 }
 
 const filetypes = [
+  {
+    name: 'All Files',
+    extensions: [''],
+  },
   {
     name: 'JavaScript',
     extensions: ['js'],
@@ -45,26 +51,43 @@ const filetypes = [
   {
     name: 'Java Source File',
     extensions: ['java'],
-  },
-  {
-    name: 'All Files',
-    extensions: ['*'],
   }
 ]
 
+document.addEventListener("keydown", (e) => keypressed(e));
+
+function keypressed (e){
+  const {key, metaKey, ctrlKey} = e; 
+  if(key === "s" && (ctrlKey || metaKey)){
+    console.log("save pressed")
+    console.log(e)
+  }
+}
+
+var filepath
+
 async function openfile() {
-  var selected = await open({
-    filters: filetypes
-  })
+  var selected = await open({filters: filetypes})
   var contents = await readTextFile(selected)
   var currenttab = document.getElementById('currenttab')
   editor.session.setValue(contents)
   currenttab.innerText = await path.basename(selected)
+  filepath = selected
 }
 
 async function savefile() {
-  var filepath = await save({
-    filters: filetypes
-  })
+  if (!filepath) {
+    filepath = await save({filters: filetypes})
+  } 
   await writeTextFile(filepath, editor.session.getValue())
+  var currenttab = document.getElementById('currenttab')
+  currenttab.innerText = await path.basename(filepath)
+  console.log(await path.basename(filepath))
+}
+
+async function saveas() {
+  filepath = await save({filters: filetypes})
+  await writeTextFile(filepath, editor.session.getValue())
+  var currenttab = document.getElementById('currenttab')
+  currenttab.innerText = await path.basename(filepath)
 }
