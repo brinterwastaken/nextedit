@@ -3,6 +3,8 @@ document.getElementById('title').innerText = document.title
 const { appWindow } = window.__TAURI__.window;
 const { open, save } = window.__TAURI__.dialog;
 const { readTextFile, writeTextFile } = window.__TAURI__.fs;
+const { emit, listen } = window.__TAURI__.event;
+
 const os = window.__TAURI__.os;
 const path = window.__TAURI__.path;
 var platform = await os.platform()
@@ -21,3 +23,9 @@ if (platform == "win32" || platform == "linux") {
 }
 
 document.getElementById('exitbtn').onclick = () => appWindow.close()
+
+
+const themeselector = document.getElementById('themeselector')
+themeselector.onchange = async () => {
+  await emit('settheme', {theme: themeselector.value.toString()})
+}

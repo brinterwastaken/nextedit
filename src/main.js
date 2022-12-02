@@ -4,9 +4,15 @@ const { invoke } = window.__TAURI__.tauri;
 const { appWindow, WebviewWindow } = window.__TAURI__.window;
 const { open, save } = window.__TAURI__.dialog;
 const { readTextFile, writeTextFile } = window.__TAURI__.fs;
+const { emit, listen } = window.__TAURI__.event;
 const os = window.__TAURI__.os;
 const path = window.__TAURI__.path;
 const settingsbtn = document.getElementById('settingsbtn')
+
+listen("settheme", ({ event, payload }) => { 
+  editor.setTheme("ace/theme/"+payload.theme)
+  updateTheme()
+});
 
 document.getElementById('openbtn').addEventListener('click', () => openfile())
 document.getElementById('savebtn').addEventListener('click', () => savefile())

@@ -17,9 +17,15 @@ var opacity = 0.7
 window.onload = () => {
 
     editor.resize()
+    
+    updateTheme()
+
+}
+
+function updateTheme() {
 
     editorbg = getComputedStyle(editordiv).getPropertyValue('background-color')
-    
+
     if (tinycolor(editorbg).isLight()) {
         rootcss.setProperty('--main-fg', '#202020')
         rootcss.setProperty('--newtab-stroke', '#202020aa')
@@ -27,6 +33,7 @@ window.onload = () => {
         rootcss.setProperty('--main-fg', '#dfdfdf')
         rootcss.setProperty('--newtab-stroke', '#dfdfdfaa')
     }
+    
     rootcss.setProperty('--editor-bg', editorbg)
     rootcss.setProperty('--bg-darken', tinycolor.mix(editorbg, '#000000', amount = 30).setAlpha(opacity))
     rootcss.setProperty('--bg-lighten', tinycolor.mix(editorbg, '#ffffff', amount = 5).setAlpha(opacity))
