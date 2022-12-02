@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="style1.css" />
     <link rel="stylesheet" href="style2.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tauri App</title>
+    <title>NextEdit</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.13.1/ace.js" integrity="sha512-IQmiIneKUJhTJElpHOlsrb3jpF7r54AzhCTi7BTDLiBVg0f7mrEqWVCmOeoqKv5hDdyf3rbbxBUgYf4u3O/QcQ==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js" integrity="sha512-+aXA9mgbUvFe0ToTlbt8/3vT7+nOgUmFw29wfFCsGoh8AZMRSU0p4WtOvC1vkF2JBrndPN2TuNZsHPAKPPxe8Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -40,11 +40,12 @@
     <div id="container">
       <div id="sidebar">
         <div id="activity-bar">
-          <button class="activity-button" id="filesact"><i class="fa-solid fa-file"></i></button>
-          <button class="activity-button" id="searchact"><i class="fa-solid fa-magnifying-glass"></i></button>
-          <button class="activity-button" id="gitact"><i class="fa-solid fa-code-branch"></i></button>
-          <button class="activity-button" id="addonact"><i class="fa-solid fa-puzzle-piece"></i></button>
-          <button class="activity-button" id="settingsbtn"><i class="fa-solid fa-gear"></i></button>
+          <button class="activity-button" id="filesact" title="Files"><i class="fa-solid fa-file"></i></button>
+          <button class="activity-button" id="searchact" title="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+          <button class="activity-button" id="gitact" title="Git"><i class="fa-solid fa-code-branch"></i></button>
+          <button class="activity-button" id="addonact" title="Addons"><i class="fa-solid fa-puzzle-piece"></i></button>
+          <button class="activity-button" id="mdact" title="Markdown mode"><i class="fa-brands fa-markdown"></i></button>
+          <button class="activity-button" id="settingsbtn" title="Settings"><i class="fa-solid fa-gear"></i></button>
         </div>
       </div>
       <div id="editorbox">

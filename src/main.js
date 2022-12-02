@@ -1,33 +1,38 @@
-// const { invoke } = window.__TAURI__.tauri;
-const { appWindow } = window.__TAURI__.window;
+document.getElementById('title').innerText = document.title
+
+const { invoke } = window.__TAURI__.tauri;
+const { appWindow, WebviewWindow } = window.__TAURI__.window;
 const { open, save } = window.__TAURI__.dialog;
 const { readTextFile, writeTextFile } = window.__TAURI__.fs;
 const os = window.__TAURI__.os;
 const path = window.__TAURI__.path;
+const settingsbtn = document.getElementById('settingsbtn')
 
 document.getElementById('openbtn').addEventListener('click', () => openfile())
 document.getElementById('savebtn').addEventListener('click', () => savefile())
 document.getElementById('savebtn').addEventListener('contextmenu', (ev) => {ev.preventDefault(); saveas()})
 
-var platform = await os.platform();
-
+var platform = await os.platform()
+var allext
 if (platform == "win32" || platform == "linux") {
   document.getElementById('win-buttons').style.display = "flex"
-  document.getElementById('win-minimize').addEventListener('click', () => appWindow.minimize())
-  document.getElementById('win-maximize').addEventListener('click', () => appWindow.toggleMaximize())
-  document.getElementById('win-close').addEventListener('click', () => appWindow.close())
+  document.getElementById('win-minimize').onclick = () => appWindow.minimize()
+  document.getElementById('win-maximize').onclick = () => appWindow.toggleMaximize()
+  document.getElementById('win-close').onclick = () => appWindow.close()
+  allext = '*'
 } else if (platform == "darwin") {
   document.getElementById("title").style.opacity = 0
   document.getElementById('mac-buttons').style.display = "flex"
-  document.getElementById('mac-minimize').addEventListener('click', () => appWindow.minimize())
-  document.getElementById('mac-maximize').addEventListener('click', () => appWindow.toggleMaximize())
-  document.getElementById('mac-close').addEventListener('click', () => appWindow.close())
+  document.getElementById('mac-minimize').onclick = () => appWindow.minimize()
+  document.getElementById('mac-maximize').onclick = () => appWindow.toggleMaximize()
+  document.getElementById('mac-close').onclick = () => appWindow.close()
+  allext = ''
 }
 
 const filetypes = [
   {
     name: 'All Files',
-    extensions: [''],
+    extensions: [allext],
   },
   {
     name: 'JavaScript',
@@ -84,6 +89,7 @@ async function openfile() {
   var currenttab = document.getElementById('currenttab')
   editor.session.setValue(contents)
   currenttab.innerText = await path.basename(selected)
+  currenttab.title = currenttab.innerText
   filepath = selected
   currenttab.classList.remove("unsaved")
 }
@@ -95,7 +101,7 @@ async function savefile() {
   await writeTextFile(filepath, editor.session.getValue())
   var currenttab = document.getElementById('currenttab')
   currenttab.innerText = await path.basename(filepath)
-  console.log(await path.basename(filepath))
+  currenttab.title = currenttab.innerText
   currenttab.classList.remove("unsaved")
 }
 
@@ -104,5 +110,25 @@ async function saveas() {
   await writeTextFile(filepath, editor.session.getValue())
   var currenttab = document.getElementById('currenttab')
   currenttab.innerText = await path.basename(filepath)
+  currenttab.title = currenttab.innerText
   currenttab.classList.remove("unsaved")
+}
+
+settingsbtn.onclick = () => {
+  const settingswindow = new WebviewWindow('settings', {
+    fullscreen: false,
+    height: 600,
+    resizable: true,
+    title: "NextEdit - Settings",
+    width: 800,
+    transparent: true,
+    decorations: false,
+    minWidth: 600,
+    minHeight: 400,
+    url: "settings.html"
+  })
+
+  settingswindow.once('tauri://created', () => {
+    invoke('settingscreated')
+  })
 }

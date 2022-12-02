@@ -44,7 +44,7 @@
 }
 #tabbar > .tab {
   border-radius: 5px;
-  width: 7rem;
+  width: 8rem;
   box-sizing: border-box;
   padding-inline: 0.5rem;
   margin-top: 0.5rem;
@@ -95,7 +95,7 @@
   top: 0.5rem;
   bottom: 0.5rem;
   left: 0.5rem;
-  width: 60px;
+  width: 3.75rem;
   background: var(--editor-bg);
   border-radius: 5px;
   display: flex;
@@ -117,9 +117,13 @@
   color: var(--main-fg);
   border-radius: 5px;
   transition: background-color 200ms;
+  cursor: pointer;
 }
 .activity-button:hover {
   background-color: rgba(255, 255, 255, 0.1);
+}
+#settingsbtn {
+  margin-top: auto;
 }
 /* Responsiveness */
 @media only screen and (max-width: 700px) {

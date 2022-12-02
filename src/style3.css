@@ -9,7 +9,7 @@ body {
   position: absolute;
   height: 100%;
   width: 100%;
-  background: var(--bg-darken);
+  background: rgba(33, 33, 33, 0.7);
   border-radius: 10px;
 }
 #titlebar {
@@ -26,7 +26,7 @@ body {
   justify-content: space-between;
   align-items: center;
   font-size: 14px;
-  color: var(--main-fg);
+  color: #fdfdfd;
   border-radius: 10px 10px 0 0;
 }
 #titlebox {
@@ -51,6 +51,7 @@ body {
 .titlebtn:hover {
   background-color: #ffffff22;
 }
+
 #win-buttons {
   display: none;
   position: absolute;
@@ -74,6 +75,7 @@ body {
 #win-buttons > div:nth-child(3):hover {
   background-color: #e33636;
 }
+
 #mac-buttons {
   display: none;
   position: absolute;
@@ -111,4 +113,54 @@ body {
 }
 #mac-buttons:hover > * > i {
   opacity: 1;
+}
+
+#categories {
+  position: absolute;
+  top: 3rem;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  width: 3.75rem;
+  background: #2f2f2f;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.625rem;
+  box-sizing: border-box;
+  gap: 0.625rem;
+  box-shadow: 0 0 10px #00000030; 
+  border: 1px solid #50505050;
+}
+.category-button {
+  all: unset;
+  height: 2.5rem;
+  width: 2.5rem;
+  font-size: 1.2rem;
+  text-align: center;
+  color: #fdfdfd;
+  border-radius: 5px;
+  transition: background-color 200ms;
+  cursor: pointer;
+}
+.category-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+#exitbtn {
+  margin-top: auto;
+}
+
+#settingspane {
+  position: absolute;
+  top: 3rem;
+  left: 4.75rem;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  background: #2f2f2f8f;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #00000030; 
+  border: 1px solid #50505050;
+  color: #fdfdfd;
+  padding-inline: 1.5rem;
 }

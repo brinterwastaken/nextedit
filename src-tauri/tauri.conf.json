@@ -55,10 +55,11 @@
     },
     "windows": [
       {
+        "label": "main",
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "nextedit",
+        "title": "NextEdit",
         "width": 800,
         "transparent": true,
         "decorations": false,
