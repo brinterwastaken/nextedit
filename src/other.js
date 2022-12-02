@@ -8,7 +8,7 @@ editor.session.setMode("ace/mode/javascript")
 editor.setOptions({
     cursorStyle: "smooth",
     showPrintMargin: false,
-    theme: "ace/theme/dracula"
+    theme: "ace/theme/one_dark"
 })
 
 var resizeTimer = null
@@ -25,7 +25,8 @@ window.onload = () => {
         rootcss.setProperty('--newtab-stroke', '#dfdfdfaa')
     }
     rootcss.setProperty('--editor-bg', editorbg)
-    rootcss.setProperty('--bg-other', tinycolor.mix(editorbg, '#000000', amount = 15).setAlpha(opacity))
+    rootcss.setProperty('--bg-darken', tinycolor.mix(editorbg, '#000000', amount = 30).setAlpha(opacity))
+    rootcss.setProperty('--bg-lighten', tinycolor.mix(editorbg, '#ffffff', amount = 5).setAlpha(opacity))
 }
 
 window.addEventListener('resize', () => {

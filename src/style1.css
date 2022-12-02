@@ -5,16 +5,23 @@ body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
 }
+#container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: var(--bg-darken);
+  border-radius: 10px;
+}
 #titlebar {
+  z-index: 1;
   position: absolute;
   box-sizing: border-box;
   user-select: none;
   top: 0;
   left: 0;
   width: 100%;
-  height: 2.5rem;
+  height: 3rem;
   padding-inline-start: 1em;
-  background: var(--bg-other);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -52,7 +59,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 2.5rem;
+  height: 3rem;
   transition: background-color 100ms;
 }
 #win-buttons > div:nth-child(1):hover, #win-buttons > div:nth-child(2):hover {
@@ -64,7 +71,7 @@ body {
 #mac-buttons {
   display: none;
   position: absolute;
-  top: 0.5rem;
+  top: 0.75rem;
   left: 0.75rem;
   height: 1.5rem;
   gap: 0.5rem;
@@ -74,9 +81,10 @@ body {
 #mac-buttons > div {
   width: 0.75rem;
   height: 0.75rem;
-  line-height: 10px;
+  line-height: 9px;
   border-radius: 50%;
   text-align: center;
+  box-sizing: border-box;
 }
 #mac-buttons > * > i {
   color: #00000080;
@@ -85,12 +93,15 @@ body {
 }
 #mac-close {
   background-color: #ff605c;
+  border: #cc4d4a 0.5px solid;
 }
 #mac-minimize {
   background-color: #ffbd44;
+  border: #cc9736 0.5px solid;
 }
 #mac-maximize {
   background-color: #00ca4e;
+  border: #00a23e 0.5px solid;
 }
 #mac-buttons:hover > * > i {
   opacity: 1;

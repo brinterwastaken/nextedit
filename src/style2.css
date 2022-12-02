@@ -1,18 +1,21 @@
 :root {
   --editor-bg: #000;
-  --bg-other: #000;
+  --bg-darken: #000;
+  --bg-lighten: #000;
   --main-fg: #000;
   --newtab-stroke: #000;
 }
 #editorbox {
   position: absolute;
-  top: 2.5rem;
+  top: 3rem;
   left: 16rem;
-  right: 0;
-  bottom: 0;
+  right: 0.5rem;
+  bottom: 0.5rem;
   background-color: var(--editor-bg);
   animation: moveright 200ms;
-  border-radius: 0 0 10px 0;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #00000030;
+  border: 1px solid var(--bg-lighten);
 }
 #editor { 
   position: absolute;
@@ -40,7 +43,7 @@
   pointer-events: all;
 }
 #tabbar > .tab {
-  border-radius: 0.5rem 0.5rem 0 0;
+  border-radius: 5px;
   width: 7rem;
   box-sizing: border-box;
   padding-inline: 0.5rem;
@@ -50,14 +53,16 @@
   overflow: hidden; 
   white-space: nowrap; 
   text-overflow: ellipsis;
+  border: 1px solid var(--bg-lighten);
 }
 #tabbar > .tab.active {
-  background-color: var(--editor-bg)
+  background-color: var(--editor-bg);
+  box-shadow: 0 0 10px #00000030;
 }
 #tabbar > .tab.inactive {
-  background-color: var(--bg-other);
+  background-color: var(--bg-darken);
 }
-#tabbar > .tab::before {
+#tabbar > .tab.unsaved::before {
   font-family: "FontAwesome";
   content: "\f304";
   font-size: 12px;
@@ -83,15 +88,45 @@
   left: 0;
   bottom: 0;
   width: 16rem;
-  background: var(--bg-other);
-  border-radius: 0 0 0 10px;
+  border-radius: 0 0 0 5px;
+}
+#activity-bar {
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  width: 60px;
+  background: var(--editor-bg);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.625rem;
+  box-sizing: border-box;
+  gap: 0.625rem;
+  box-shadow: 0 0 10px #00000030; 
+  border: 1px solid var(--bg-lighten);
+}
+.activity-button {
+  all: unset;
+  height: 2.5rem;
+  width: 2.5rem;
+  font-size: 1.2rem;
+  text-align: center;
+  color: var(--main-fg);
+  border-radius: 5px;
+  transition: background-color 200ms;
+}
+.activity-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 /* Responsiveness */
 @media only screen and (max-width: 700px) {
   #editorbox {
     animation: moveleft 200ms;
-    border-radius: 0 0 10px 10px;
-    left: 0;
+    border-radius: 5px;
+    left: 0.5rem;
   }
   #tabbar {
     animation: tableft 200ms;
@@ -102,10 +137,10 @@
 /* Animations */
 @keyframes moveleft {
   from {left: 16rem;} 
-  to {left: 0;}
+  to {left: 0.5rem;}
 }
 @keyframes moveright {
-  from {left: 0;} 
+  from {left: 0.5rem;} 
   to {left: 16rem;}
 }
 @keyframes tableft {

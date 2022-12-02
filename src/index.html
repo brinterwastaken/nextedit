@@ -32,14 +32,20 @@
           <div id="mac-maximize"><i class="fa-solid fa-plus"></i></div>
         </div>
       </div>
-    </div>
-    <div id="container">
       <div id="tabbar">
         <div class="tab active" id="currenttab">Untitled</div>
         <div id="newtab"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="10" y1="5" x2="10" y2="15"/><line x1="5" y1="10" x2="15" y2="10"/></svg></div>
       </div>
+    </div>
+    <div id="container">
       <div id="sidebar">
-        <p style="color:red;padding-inline:1rem;">dev</p>
+        <div id="activity-bar">
+          <button class="activity-button" id="filesact"><i class="fa-solid fa-file"></i></button>
+          <button class="activity-button" id="searchact"><i class="fa-solid fa-magnifying-glass"></i></button>
+          <button class="activity-button" id="gitact"><i class="fa-solid fa-code-branch"></i></button>
+          <button class="activity-button" id="addonact"><i class="fa-solid fa-puzzle-piece"></i></button>
+          <button class="activity-button" id="settingsbtn"><i class="fa-solid fa-gear"></i></button>
+        </div>
       </div>
       <div id="editorbox">
         <div id="editor"></div>

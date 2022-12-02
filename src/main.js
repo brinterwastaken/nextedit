@@ -69,8 +69,12 @@ document.addEventListener("keyup", (e) => {
   if(key === "s" && shiftKey && modKey){
     saveas()
   }
-
 });
+
+editor.on('change', () => {
+  var currenttab = document.getElementById('currenttab')
+  currenttab.classList.add("unsaved")
+})
 
 var filepath
 
@@ -81,6 +85,7 @@ async function openfile() {
   editor.session.setValue(contents)
   currenttab.innerText = await path.basename(selected)
   filepath = selected
+  currenttab.classList.remove("unsaved")
 }
 
 async function savefile() {
@@ -91,6 +96,7 @@ async function savefile() {
   var currenttab = document.getElementById('currenttab')
   currenttab.innerText = await path.basename(filepath)
   console.log(await path.basename(filepath))
+  currenttab.classList.remove("unsaved")
 }
 
 async function saveas() {
@@ -98,4 +104,5 @@ async function saveas() {
   await writeTextFile(filepath, editor.session.getValue())
   var currenttab = document.getElementById('currenttab')
   currenttab.innerText = await path.basename(filepath)
+  currenttab.classList.remove("unsaved")
 }
