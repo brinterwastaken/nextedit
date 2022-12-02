@@ -8,7 +8,7 @@ editor.session.setMode("ace/mode/javascript")
 editor.setOptions({
     cursorStyle: "smooth",
     showPrintMargin: false,
-    theme: "ace/theme/pastel_on_dark"
+    theme: "ace/theme/dracula"
 })
 
 var resizeTimer = null
@@ -33,7 +33,7 @@ function updateTheme() {
         rootcss.setProperty('--main-fg', '#dfdfdf')
         rootcss.setProperty('--newtab-stroke', '#dfdfdfaa')
     }
-    
+
     rootcss.setProperty('--editor-bg', editorbg)
     rootcss.setProperty('--bg-darken', tinycolor.mix(editorbg, '#000000', amount = 30).setAlpha(opacity))
     rootcss.setProperty('--bg-lighten', tinycolor.mix(editorbg, '#ffffff', amount = 5).setAlpha(opacity))

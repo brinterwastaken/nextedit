@@ -164,3 +164,17 @@ body {
   color: #fdfdfd;
   padding-inline: 1.5rem;
 }
+
+select {
+  all: unset;
+  background: #2020208f;
+  color: #fdfdfd;
+  padding: 0.25rem;
+  width: 7rem;
+  border: 1px solid #50505050;
+  transition: background-color 200ms;
+  border-radius: 5px;
+}
+select:hover {
+  background: #2f2f2f8f;
+}
