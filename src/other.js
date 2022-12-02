@@ -8,7 +8,7 @@ editor.session.setMode("ace/mode/javascript")
 editor.setOptions({
     cursorStyle: "smooth",
     showPrintMargin: false,
-    theme: "ace/theme/one_dark"
+    theme: "ace/theme/dracula"
 })
 
 var resizeTimer = null
