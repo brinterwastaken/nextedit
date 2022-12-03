@@ -29,6 +29,11 @@ async function getConfig() {
   return config
 }
 
+async function updateConfig() {
+  configDir = await path.appConfigDir()
+  await writeTextFile(configDir + "config.json", JSON.stringify(config,null,2))
+}
+
 getConfig().then((e) => {
   editor.setTheme("ace/theme/"+config.appearance.theme)
   setTimeout(updateTheme, 100)
@@ -37,6 +42,8 @@ getConfig().then((e) => {
 listen("settheme", ({ event, payload }) => { 
   editor.setTheme("ace/theme/"+payload.theme)
   setTimeout(updateTheme, 100)
+  config.appearance.theme = payload.theme
+  updateConfig()
 });
 
 document.getElementById('openbtn').addEventListener('click', () => openfile())
