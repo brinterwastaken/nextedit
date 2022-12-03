@@ -30,3 +30,6 @@ const themeselector = document.getElementById('themeselector')
 themeselector.onchange = async () => {
   await emit('settheme', {theme: themeselector.value.toString()})
 }
+
+document.getElementById('visuals-category').onclick = () => document.getElementById('appearance').scrollIntoView({behavior:"smooth"});
+document.getElementById('editor-category').onclick = () => document.getElementById('editor').scrollIntoView({behavior:"smooth"});

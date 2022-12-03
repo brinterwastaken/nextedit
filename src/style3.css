@@ -1,9 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Roboto&display=swap');
 
+html {
+  scroll-behavior: smooth;
+}
 body {
   background: none;
   margin: 0;
   font-family: 'Roboto', sans-serif;
+  overflow:hidden;
+}
+::-webkit-scrollbar {
+  border-radius: 5px;
+  width: 0.75rem;
+}
+::-webkit-scrollbar-track {
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.2rem;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 2px solid transparent;
+  background-clip: content-box;
 }
 #container {
   position: absolute;
@@ -162,7 +181,14 @@ body {
   box-shadow: 0 0 10px #00000030; 
   border: 1px solid #50505050;
   color: #fdfdfd;
-  padding-inline: 1.5rem;
+  overflow: auto;
+}
+
+.cfgcategory {
+  padding: 1.5rem;
+}
+.cfgcategory h1 {
+  margin: 0 0 1rem 0;
 }
 
 select {
