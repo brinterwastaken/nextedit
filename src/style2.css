@@ -4,6 +4,8 @@
   --bg-lighten: #000;
   --main-fg: #000;
   --newtab-stroke: #000;
+  --sidebar-bg: #000;
+  --highlight: #000;
 }
 #editorbox {
   position: absolute;
@@ -96,7 +98,7 @@
   bottom: 0.5rem;
   left: 0.5rem;
   width: 3.75rem;
-  background: var(--editor-bg);
+  background: var(--sidebar-bg);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -120,7 +122,7 @@
   cursor: pointer;
 }
 .activity-button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--highlight);
 }
 #settingsbtn {
   margin-top: auto;

@@ -49,7 +49,7 @@ body {
   transition: background-color 120ms;
 }
 .titlebtn:hover {
-  background-color: #ffffff22;
+  background-color: var(--highlight);
 }
 #win-buttons {
   display: none;

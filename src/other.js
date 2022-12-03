@@ -8,7 +8,6 @@ editor.session.setMode("ace/mode/javascript")
 editor.setOptions({
     cursorStyle: "smooth",
     showPrintMargin: false,
-    theme: "ace/theme/dracula"
 })
 
 var resizeTimer = null
@@ -18,14 +17,14 @@ window.onload = () => {
 
     editor.resize()
     
-    updateTheme()
+    setTimeout(updateTheme, 10)
 
 }
 
 function updateTheme() {
 
     editorbg = getComputedStyle(editordiv).getPropertyValue('background-color')
-
+    highlight = getComputedStyle(document.querySelector(".ace_active-line")).getPropertyValue('background-color')
     if (tinycolor(editorbg).isLight()) {
         rootcss.setProperty('--main-fg', '#202020')
         rootcss.setProperty('--newtab-stroke', '#202020aa')
@@ -37,6 +36,8 @@ function updateTheme() {
     rootcss.setProperty('--editor-bg', editorbg)
     rootcss.setProperty('--bg-darken', tinycolor.mix(editorbg, '#000000', amount = 30).setAlpha(opacity))
     rootcss.setProperty('--bg-lighten', tinycolor.mix(editorbg, '#ffffff', amount = 5).setAlpha(opacity))
+    rootcss.setProperty('--sidebar-bg', tinycolor(editorbg, '#ffffff', amount = 5).setAlpha(opacity))
+    rootcss.setProperty('--highlight', highlight)
 
 }
 

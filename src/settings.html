@@ -13,6 +13,7 @@
   <div data-tauri-drag-region id="titlebar">
     <div id="titlebox" data-tauri-drag-region>
       <div id="title"></div>
+      <div class="titlebtn" id="cfgopen" title="Open config folder"><i class="fa-regular fa-folder-open"></i></div>
     </div>
     <div id="btnbox">
       <div id="win-buttons">
@@ -30,11 +31,10 @@
   
   <div id="container">
     <div id="categories">
-      <button class="category-button" id="filesact" title="Appearance"><i class="fa-solid fa-palette"></i></button>
-      <button class="category-button" id="searchact" title="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
-      <button class="category-button" id="gitact" title="Git"><i class="fa-solid fa-code-branch"></i></button>
-      <button class="category-button" id="addonact" title="Addons"><i class="fa-solid fa-puzzle-piece"></i></button>
-      <button class="category-button" id="mdact" title="Markdown mode"><i class="fa-brands fa-markdown"></i></button>
+      <button class="category-button" id="visuals-category" title="Appearance"><i class="fa-solid fa-palette"></i></button>
+      <button class="category-button" id="editor-category" title="Editor"><i class="fa-solid fa-pen-to-square"></i></button>
+      <button class="category-button" id="addon-category" title="Addons"><i class="fa-solid fa-puzzle-piece"></i></button>
+      <button class="category-button" id="md-category" title="Markdown mode"><i class="fa-brands fa-markdown"></i></button>
       <button class="category-button" id="exitbtn" title="Exit Settings"><i class="fa-solid fa-left-long"></i></button>
     </div>
     <div id="settingspane">
@@ -58,7 +58,20 @@
             <option value="tomorrow_night_eighties">Tomorrow Night 80s</option>
           </optgroup>
           <optgroup label="Light">
-
+            <option value="chrome">Chrome</option>
+            <option value="clouds">Clouds</option>
+            <option value="crimson_editor">Crimson Editor</option>
+            <option value="dawn">Dawn</option>
+            <option value="dreamweaver">Dreamweaver</option>
+            <option value="crimson_editor">Crimson Editor</option>
+            <option value="eclipse">Eclipse</option>
+            <option value="github">GitHub</option>
+            <option value="eclipse">Eclipse</option>
+            <option value="iplastic">IPlastic</option>
+            <option value="solarized_light">Solarized Light</option>
+            <option value="textmate">TextMate</option>
+            <option value="solarized_light">Solarized Light</option>
+            <option value="xcode">XCode</option>
           </optgroup>
         </select></label>
       </div>

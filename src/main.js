@@ -3,15 +3,40 @@ document.getElementById('title').innerText = document.title
 const { invoke } = window.__TAURI__.tauri;
 const { appWindow, WebviewWindow } = window.__TAURI__.window;
 const { open, save } = window.__TAURI__.dialog;
-const { readTextFile, writeTextFile } = window.__TAURI__.fs;
+const { readTextFile, writeTextFile, exists, BaseDirectory } = window.__TAURI__.fs;
 const { emit, listen } = window.__TAURI__.event;
 const os = window.__TAURI__.os;
 const path = window.__TAURI__.path;
 const settingsbtn = document.getElementById('settingsbtn')
+var configDir, config, configjson
+
+const defaultconfig = {
+  appearance: {
+    theme: "dracula",
+    opacity: 0.7
+  }
+}
+
+async function getConfig() {
+  configDir = await path.appConfigDir()
+  console.log(configDir + "config.json")
+  if (await exists(configDir + "config.json")) {
+    config = JSON.parse(await readTextFile(configDir + "config.json"))
+  } else {
+    config = defaultconfig
+    await writeTextFile(configDir + "config.json", JSON.stringify(config,null,2))
+  }
+  return config
+}
+
+getConfig().then((e) => {
+  editor.setTheme("ace/theme/"+config.appearance.theme)
+  setTimeout(updateTheme, 100)
+})
 
 listen("settheme", ({ event, payload }) => { 
   editor.setTheme("ace/theme/"+payload.theme)
-  updateTheme()
+  setTimeout(updateTheme, 100)
 });
 
 document.getElementById('openbtn').addEventListener('click', () => openfile())

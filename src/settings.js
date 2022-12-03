@@ -4,6 +4,7 @@ const { appWindow } = window.__TAURI__.window;
 const { open, save } = window.__TAURI__.dialog;
 const { readTextFile, writeTextFile } = window.__TAURI__.fs;
 const { emit, listen } = window.__TAURI__.event;
+const shell = window.__TAURI__.shell;
 
 const os = window.__TAURI__.os;
 const path = window.__TAURI__.path;
@@ -23,7 +24,7 @@ if (platform == "win32" || platform == "linux") {
 }
 
 document.getElementById('exitbtn').onclick = () => appWindow.close()
-
+document.getElementById('cfgopen').onclick = async () => shell.open(await path.appConfigDir())
 
 const themeselector = document.getElementById('themeselector')
 themeselector.onchange = async () => {
