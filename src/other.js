@@ -47,10 +47,6 @@ window.onresize = () => {
     }, 200);
 }
 
-settingsbtn.onclick = () => {
-    console.log("hello");
-}
-
 var mainsession = editor.session
 var newtab = document.querySelector("#newtab")
 var tabbar = document.querySelector("#tabbar")

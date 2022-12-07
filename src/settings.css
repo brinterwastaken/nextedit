@@ -204,3 +204,9 @@ select {
 select:hover {
   background: #2f2f2f8f;
 }
+
+label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

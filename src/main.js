@@ -13,7 +13,7 @@ var configDir, config, configjson
 const defaultconfig = {
   appearance: {
     theme: "dracula",
-    opacity: 0.7
+    opacity: 0.85
   }
 }
 
@@ -37,9 +37,10 @@ async function updateConfig() {
   await writeTextFile(configDir + "config.json", JSON.stringify(config,null,2))
 }
 
-getConfig().then((e) => {
-  editor.setTheme("ace/theme/"+config.appearance.theme)
-  setTimeout(() => {updateTheme(config.appearance.opacity)}, 100)
+getConfig().then((conf) => {
+  console.log(conf.appearance.opacity)
+  editor.setTheme("ace/theme/"+conf.appearance.theme)
+  setTimeout(() => {updateTheme(conf.appearance.opacity)}, 100)
 })
 
 listen("settheme", ({ event, payload }) => { 
@@ -162,6 +163,7 @@ async function saveas() {
 }
 
 settingsbtn.onclick = () => {
+
   const settingswindow = new WebviewWindow('settings', {
     fullscreen: false,
     height: 600,
@@ -178,4 +180,7 @@ settingsbtn.onclick = () => {
   settingswindow.once('tauri://created', () => {
     invoke('settingscreated')
   })
+  
+  getConfig().then(async (conf) => { await emit("gotConfig", conf) })
+
 }

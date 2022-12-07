@@ -27,13 +27,25 @@ document.getElementById('exitbtn').onclick = () => appWindow.close()
 document.getElementById('cfgopen').onclick = async () => shell.open(await path.appConfigDir())
 
 const themeselector = document.getElementById('themeselector')
+const opacityslider = document.getElementById('opacityslider')
+const opacityvalue = document.getElementById('opacityvalue')
+
+listen("gotConfig", ({ event, payload }) => {
+  console.log(payload.appearance.theme)
+  opacityvalue.innerText = `(${payload.appearance.opacity})`
+  opacityslider.value = payload.appearance.opacity * 100/5
+  themeselector.value = payload.appearance.theme
+})
+
 themeselector.onchange = async () => {
   await emit('settheme', {theme: themeselector.value.toString()})
 }
-const opacityslider = document.getElementById('opacityslider')
 opacityslider.onchange = async () => {
   var opacity = opacityslider.value * 5/100
   await emit('setopacity', {opacity: opacity})
+}
+opacityslider.oninput = () => {
+  opacityvalue.innerText = `(${opacityslider.value * 5/100})`
 }
 
 document.getElementById('visuals-category').onclick = () => document.getElementById('appearance').scrollIntoView({behavior:"smooth"});
