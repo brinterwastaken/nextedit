@@ -30,6 +30,11 @@ const themeselector = document.getElementById('themeselector')
 themeselector.onchange = async () => {
   await emit('settheme', {theme: themeselector.value.toString()})
 }
+const opacityslider = document.getElementById('opacityslider')
+opacityslider.onchange = async () => {
+  var opacity = opacityslider.value * 5/100
+  await emit('setopacity', {opacity: opacity})
+}
 
 document.getElementById('visuals-category').onclick = () => document.getElementById('appearance').scrollIntoView({behavior:"smooth"});
 document.getElementById('editor-category').onclick = () => document.getElementById('editor').scrollIntoView({behavior:"smooth"});
