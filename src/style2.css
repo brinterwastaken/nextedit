@@ -10,7 +10,7 @@
 #editorbox {
   position: absolute;
   top: 3rem;
-  left: 16rem;
+  left: 20rem;
   right: 0.5rem;
   bottom: 0.5rem;
   background-color: var(--editor-bg);
@@ -32,7 +32,7 @@
 #tabbar {
   position: absolute;
   top: 0rem;
-  left: 16rem;
+  left: 20rem;
   right: 0;
   height: 2.5rem;
   line-height: 2rem;
@@ -128,7 +128,7 @@
   margin-top: auto;
 }
 /* Responsiveness */
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 800px) {
   #editorbox {
     animation: moveleft 200ms;
     border-radius: 5px;
@@ -142,19 +142,19 @@
 /* -------------- */
 /* Animations */
 @keyframes moveleft {
-  from {left: 16rem;} 
+  from {left: 20rem;} 
   to {left: 0.5rem;}
 }
 @keyframes moveright {
   from {left: 0.5rem;} 
-  to {left: 16rem;}
+  to {left: 20rem;}
 }
 @keyframes tableft {
-  from {left: 16rem;} 
+  from {left: 20rem;} 
   to {left: 9rem;}
 }
 @keyframes tabright {
   from {left: 9rem;} 
-  to {left: 16rem;}
+  to {left: 20rem;}
 }
 /* ---------- */

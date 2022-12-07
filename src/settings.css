@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Roboto&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 html {
   scroll-behavior: smooth;
 }
@@ -196,10 +196,13 @@ select {
   background: #2020208f;
   color: #fdfdfd;
   padding: 0.25rem;
-  width: 7rem;
+  width: 8rem;
   border: 1px solid #50505050;
   transition: background-color 200ms;
   border-radius: 5px;
+  overflow: hidden; 
+  white-space: nowrap; 
+  text-overflow: ellipsis;
 }
 select:hover {
   background: #2f2f2f8f;

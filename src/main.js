@@ -180,7 +180,8 @@ settingsbtn.onclick = () => {
   settingswindow.once('tauri://created', () => {
     invoke('settingscreated')
   })
-  
-  getConfig().then(async (conf) => { await emit("gotConfig", conf) })
+  setTimeout(() => {
+    getConfig().then(async (conf) => { await emit("gotConfig", conf) })
+  }, 1000);
 
 }

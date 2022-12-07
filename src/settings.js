@@ -4,8 +4,8 @@ const { appWindow } = window.__TAURI__.window;
 const { open, save } = window.__TAURI__.dialog;
 const { readTextFile, writeTextFile } = window.__TAURI__.fs;
 const { emit, listen } = window.__TAURI__.event;
+const { getVersion, getTauriVersion } = window.__TAURI__.app;
 const shell = window.__TAURI__.shell;
-
 const os = window.__TAURI__.os;
 const path = window.__TAURI__.path;
 var platform = await os.platform()
@@ -48,5 +48,11 @@ opacityslider.oninput = () => {
   opacityvalue.innerText = `(${opacityslider.value * 5/100})`
 }
 
+document.getElementById('appversion').innerText = "v" + await getVersion();
+document.getElementById('appos').innerText = platform
+document.getElementById('osarch').innerText = await os.arch()
+document.getElementById('tauriversion').innerText = await getTauriVersion();
+
 document.getElementById('visuals-category').onclick = () => document.getElementById('appearance').scrollIntoView({behavior:"smooth"});
 document.getElementById('editor-category').onclick = () => document.getElementById('editor').scrollIntoView({behavior:"smooth"});
+document.getElementById('info-category').onclick = () => document.getElementById('info').scrollIntoView({behavior:"smooth"});

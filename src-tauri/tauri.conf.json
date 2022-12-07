@@ -15,6 +15,13 @@
       "all": true,
       "fs": {
         "scope": ["$APPCONFIG", "$APPCONFIG/*"]
+      },
+      "shell": {
+        "scope": [{
+          "name": "nodeversion",
+          "cmd": "node",
+          "args": ["-v"]
+        }]
       }
     },
     "bundle": {
