@@ -1,0 +1,32 @@
+.dropdown {
+  width: 8rem;
+  position: absolute;
+  background-color: var(--sidebar-bg);
+  color: var(--main-fg);
+  box-shadow: 0 0 10px #00000030; 
+  border: 1px solid var(--bg-lighten);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  backdrop-filter: blur(10px);
+}
+.dropdown > div {
+  cursor: pointer;
+  padding: 0.3rem;
+}
+.dropdown > div:hover {
+  background-color: var(--bg-lighten);
+}
+
+#filemenu {
+  display: none;
+  top: 3rem;
+  left: 4.8rem;
+}
+
+#editmenu {
+  display: none;
+  top: 3rem;
+  left: 8rem;
+}

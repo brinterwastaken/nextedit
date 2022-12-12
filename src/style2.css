@@ -6,11 +6,12 @@
   --newtab-stroke: #000;
   --sidebar-bg: #000;
   --highlight: #000;
+  --font: 'JetBrains Mono';
 }
 #editorbox {
   position: absolute;
   top: 3rem;
-  left: 20rem;
+  left: 18rem;
   right: 0.5rem;
   bottom: 0.5rem;
   background-color: var(--editor-bg);
@@ -27,12 +28,12 @@
   bottom: 0;
   margin: 1em;
   font-size: 16px;
-  font-family: 'JetBrains Mono';
+  font-family: var(--font);
 }
 #tabbar {
   position: absolute;
   top: 0rem;
-  left: 20rem;
+  left: 18rem;
   right: 0;
   height: 2.5rem;
   line-height: 2rem;
@@ -128,7 +129,7 @@
   margin-top: auto;
 }
 /* Responsiveness */
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 700px) {
   #editorbox {
     animation: moveleft 200ms;
     border-radius: 5px;
@@ -136,25 +137,25 @@
   }
   #tabbar {
     animation: tableft 200ms;
-    left: 9rem;
+    left: 12rem;
   }
 }
 /* -------------- */
 /* Animations */
 @keyframes moveleft {
-  from {left: 20rem;} 
+  from {left: 18rem;} 
   to {left: 0.5rem;}
 }
 @keyframes moveright {
   from {left: 0.5rem;} 
-  to {left: 20rem;}
+  to {left: 18rem;}
 }
 @keyframes tableft {
-  from {left: 20rem;} 
-  to {left: 9rem;}
+  from {left: 18rem;} 
+  to {left: 12rem;}
 }
 @keyframes tabright {
-  from {left: 9rem;} 
-  to {left: 20rem;}
+  from {left: 12rem;} 
+  to {left: 18rem;}
 }
 /* ---------- */

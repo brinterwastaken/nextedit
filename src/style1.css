@@ -31,17 +31,18 @@ body {
 }
 #titlebox {
   display: flex;
-  gap: 0.4rem;
+  gap: 0.25rem;
   align-items: center;
 }
 #title {
   pointer-events: none;
+  margin-right: 0.5rem;
 }
 .titlebtn {
   cursor: pointer;
   padding: 0.2em;
   box-sizing: border-box;
-  width: 28px;
+  width: 3rem;
   height: 28px;
   line-height: 24px;
   text-align: center;

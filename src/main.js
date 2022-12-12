@@ -3,7 +3,7 @@ document.getElementById('title').innerText = document.title
 const { invoke } = window.__TAURI__.tauri;
 const { appWindow, WebviewWindow } = window.__TAURI__.window;
 const { open, save } = window.__TAURI__.dialog;
-const { readTextFile, writeTextFile, exists, BaseDirectory, createDir } = window.__TAURI__.fs;
+const { readTextFile, writeTextFile, exists, BaseDirectory, createDir, readDir } = window.__TAURI__.fs;
 const { emit, listen } = window.__TAURI__.event;
 const os = window.__TAURI__.os;
 const path = window.__TAURI__.path;
@@ -19,7 +19,7 @@ const defaultconfig = {
 
 async function getConfig() {
   configDir = await path.appConfigDir()
-  console.log(configDir + "config.json")
+  console.log("Reading config file: " + configDir + "config.json")
   if (await exists(configDir) && await exists(configDir + "config.json")) {
     config = JSON.parse(await readTextFile(configDir + "config.json"))
   } else {
@@ -34,6 +34,7 @@ async function getConfig() {
 
 async function updateConfig() {
   configDir = await path.appConfigDir()
+  console.log("Writing config file: " + configDir + "config.json")
   await writeTextFile(configDir + "config.json", JSON.stringify(config,null,2))
 }
 
@@ -55,10 +56,6 @@ listen("setopacity", ({ event, payload }) => {
   setTimeout(() => {updateTheme(config.appearance.opacity)}, 100)
   updateConfig()
 });
-
-document.getElementById('openbtn').addEventListener('click', () => openfile())
-document.getElementById('savebtn').addEventListener('click', () => savefile())
-document.getElementById('savebtn').addEventListener('contextmenu', (ev) => {ev.preventDefault(); saveas()})
 
 var platform = await os.platform()
 var allext
@@ -131,15 +128,40 @@ editor.on('change', () => {
 
 var filepath
 
+function toggledropdown(dropdownID = "") {
+  var dropdown = document.getElementById(dropdownID)
+  if (getComputedStyle(dropdown).display.toString() === "none") {
+    document.querySelectorAll(".dropdown").forEach((elmt) => { elmt.style.display = "none"})
+    dropdown.style.display = "flex"
+    document.onkeydown = (key) => {
+      if (key.key == "Escape") { dropdown.style.display = "none"; document.onkeydown = null }
+    }
+  } else if (getComputedStyle(dropdown).display == "flex") {
+    dropdown.style.display = "none"
+    document.onkeydown = null
+  }
+}
+
 async function openfile() {
   var selected = await open({filters: filetypes})
   var contents = await readTextFile(selected)
   var currenttab = document.getElementById('currenttab')
   editor.session.setValue(contents)
+  // Not working fully.
+  editor.session.setMode("ace/mode/" + await path.extname(selected))
   currenttab.innerText = await path.basename(selected)
   currenttab.title = currenttab.innerText
   filepath = selected
   currenttab.classList.remove("unsaved")
+}
+
+async function opendir() {
+  console.log("WORK IN PROGRESS")
+  var selected = await open({directory: true, defaultPath: await path.homeDir()})
+  var entries = await readDir(selected)
+  entries.forEach((entry) => {
+    console.log(entry.name)
+  })
 }
 
 async function savefile() {
@@ -162,8 +184,7 @@ async function saveas() {
   currenttab.classList.remove("unsaved")
 }
 
-settingsbtn.onclick = () => {
-
+const opensettings = () => {
   const settingswindow = new WebviewWindow('settings', {
     fullscreen: false,
     height: 600,
@@ -183,5 +204,18 @@ settingsbtn.onclick = () => {
   setTimeout(() => {
     getConfig().then(async (conf) => { await emit("gotConfig", conf) })
   }, 1000);
-
 }
+
+settingsbtn.onclick = opensettings
+
+document.getElementById('filebtn').onclick = () => toggledropdown("filemenu")
+document.getElementById('editbtn').onclick = () => toggledropdown("editmenu")
+
+document.getElementById('savebtn').onclick = () => { savefile(); toggledropdown("filemenu"); }
+document.getElementById('saveasbtn').onclick = () => { saveas(); toggledropdown("filemenu"); }
+document.getElementById('openbtn').onclick = () => { openfile(); toggledropdown("filemenu"); }
+document.getElementById('opendir').onclick = () => { opendir(); toggledropdown("filemenu"); }
+
+document.getElementById('undobtn').onclick = () => { editor.undo(); toggledropdown("editmenu"); }
+document.getElementById('redobtn').onclick = () => { editor.redo(); toggledropdown("editmenu"); }
+document.getElementById('settingsmenubtn').onclick = () => { opensettings(); toggledropdown("editmenu"); }

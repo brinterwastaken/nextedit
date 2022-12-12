@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style1.css" />
     <link rel="stylesheet" href="style2.css" />
+    <link rel="stylesheet" href="other.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NextEdit</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.13.1/ace.js" integrity="sha512-IQmiIneKUJhTJElpHOlsrb3jpF7r54AzhCTi7BTDLiBVg0f7mrEqWVCmOeoqKv5hDdyf3rbbxBUgYf4u3O/QcQ==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
@@ -17,8 +18,8 @@
     <div data-tauri-drag-region id="titlebar">
       <div id="titlebox" data-tauri-drag-region>
         <div id="title"></div>
-        <div class="titlebtn" id="savebtn" title="left click - save, right click - save as"><i class="fa-solid fa-floppy-disk"></i></div>
-        <div class="titlebtn" id="openbtn" title="open"><i class="fa-regular fa-folder-open"></i></div>
+        <div class="titlebtn" id="filebtn" title="Save, Open, etc.">File</div>
+        <div class="titlebtn" id="editbtn" title="Undo, Redo, etc.">Edit</div>
       </div>
       <div id="btnbox">
         <div id="win-buttons">
@@ -51,6 +52,19 @@
       </div>
       <div id="editorbox">
         <div id="editor"></div>
+      </div>
+    </div>
+    <div id="other">
+      <div id="filemenu" class="dropdown">
+        <div id="savebtn">Save</div>
+        <div id="saveasbtn">Save As</div>
+        <div id="openbtn">Open File</div>
+        <div id="opendir">Open Folder</div>
+      </div>
+      <div id="editmenu" class="dropdown">
+        <div id="undobtn">Undo</div>
+        <div id="redobtn">Redo</div>
+        <div id="settingsmenubtn">Settings</div>
       </div>
     </div>
   </body>

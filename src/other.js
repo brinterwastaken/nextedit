@@ -4,7 +4,6 @@ const editordiv = document.getElementById('editor')
 var editor = ace.edit("editor")
 var langTools = ace.require("ace/ext/language_tools")
 
-editor.session.setMode("ace/mode/javascript")
 editor.setOptions({
     cursorStyle: "smooth",
     showPrintMargin: false,
