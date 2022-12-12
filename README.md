@@ -1,3 +1,3 @@
 # NextEdit
 
-- WIP text editor based on ace and tauri.
+- WIP text editor using ace and tauri.
