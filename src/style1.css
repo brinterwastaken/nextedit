@@ -5,6 +5,22 @@ body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
 }
+::-webkit-scrollbar {
+  border-radius: 5px;
+  width: 0.75rem;
+  height: 0.75rem;
+}
+::-webkit-scrollbar-track {
+  border-radius: 2px;
+  background-color: var(--bg-lighten);
+  padding: 0.2rem;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
 #container {
   position: absolute;
   height: 100%;

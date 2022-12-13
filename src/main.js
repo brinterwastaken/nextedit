@@ -113,18 +113,22 @@ document.addEventListener("keyup", (e) => {
   } else if (platform == "darwin") {
     modKey = metaKey
   }
-  if(key === "s"  && !shiftKey && modKey){
+  if(key === "s"  && !shiftKey && modKey) {
     savefile()
   }
-  if(key === "s" && shiftKey && modKey){
+  if(key === "s" && shiftKey && modKey) {
     saveas()
   }
+  if(key === "o" && !shiftKey && modKey) {
+    openfile()
+  }
+  if(key === "o" && shiftKey && modKey) {
+    opendir()
+  }
+  if(key === ","  && !shiftKey && modKey) {
+    opensettings()
+  }
 });
-
-editor.on('change', () => {
-  var currenttab = document.getElementById('currenttab')
-  currenttab.classList.add("unsaved")
-})
 
 var filepath
 
@@ -147,8 +151,14 @@ async function openfile() {
   var contents = await readTextFile(selected)
   var currenttab = document.getElementById('currenttab')
   editor.session.setValue(contents)
-  // Not working fully.
-  editor.session.setMode("ace/mode/" + await path.extname(selected))
+  var fileExt 
+  try {
+    fileExt = await path.extname(selected)
+  } catch(err){
+    fileExt = "txt"
+    console.warn(err)
+  }
+  editor.session.setMode("ace/mode/" + (modemap[fileExt] ? modemap[fileExt] : "text"))
   currenttab.innerText = await path.basename(selected)
   currenttab.title = currenttab.innerText
   filepath = selected

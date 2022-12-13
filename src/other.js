@@ -9,6 +9,8 @@ editor.setOptions({
     showPrintMargin: false,
 })
 
+editor.commands.removeCommand("showSettingsMenu")
+
 var resizeTimer = null
 
 window.onload = () => {
@@ -45,6 +47,14 @@ window.onresize = () => {
         editor.resize()
     }, 200);
 }
+
+editor.on('change', () => {
+    resizeTimer = window.setTimeout(function() {
+        editor.resize()
+    }, 200);
+    var currenttab = document.getElementById('currenttab')
+    currenttab.classList.add("unsaved")
+})
 
 var mainsession = editor.session
 var newtab = document.querySelector("#newtab")
