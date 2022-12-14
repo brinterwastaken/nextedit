@@ -211,8 +211,10 @@ const opensettings = () => {
   settingswindow.once('tauri://created', () => {
     invoke('settingscreated')
   })
+
   setTimeout(() => {
     getConfig().then(async (conf) => { await emit("gotConfig", conf) })
+    settingswindow.setFocus();
   }, 1000);
 }
 
