@@ -17,6 +17,7 @@ if (platform == "win32" || platform == "linux") {
   document.getElementById('win-close').onclick = () => appWindow.close()
 } else if (platform == "darwin") {
   document.getElementById("title").style.opacity = 0
+  document.getElementById("title").style.width = "3.5rem"
   document.getElementById('mac-buttons').style.display = "flex"
   document.getElementById('mac-minimize').onclick = () => appWindow.minimize()
   document.getElementById('mac-maximize').onclick = () => appWindow.toggleMaximize()
